@@ -1,10 +1,10 @@
 
 import { combineReducers } from 'redux'
-import C from '../constants'
+import { SET } from '../constants'
 
-const newsitems = (state=[], action) {
+const newsitems = (state=[], action) => {
   switch (action.type) {
-    case C.SET.newsitems:
+    case SET.newsitems:
       return action.newsitems
     default:
       return state

@@ -32,7 +32,10 @@
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-redux": "^5.0.7",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
     "redux": "^4.0.0",
+    "redux-thunk": "^2.2.0",
     "resource-router-middleware": "^0.6.0"
   },
   "devDependencies": {
@@ -50,7 +53,7 @@
   },
   "homepage": "https://github.com/developit/express-es6-rest-api#readme",
   "scripts": {
-    "dev": "NODE_PATH=./config/development:$NODE_PATH nodemon -w src --exec \"babel-node src --presets es2015,stage-0\"",
+    "dev": "NODE_PATH=./config/development:$NODE_PATH nodemon -w src/server.jsx --exec babel-node src/server.jsx --presets es2015,stage-0",
     "build": "babel src -s -D -d dist --presets es2015,stage-0",
     "start": "node dist",
     "prestart": "npm run -s build",
