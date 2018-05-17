@@ -1,22 +1,19 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 class MainNavigation extends React.Component {
   render () {
     return (
       <div>
         <ul>
-          <li>
-            <NavLink to="/">Home</NavLink>
-          </li>
-          <li>
-            <NavLink to="/blog">Blog</NavLink>
-          </li>
-          <li>
-            <NavLink to="/contact">Contact</NavLink>
-          </li>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/blog">Blog</Link></li>
+          <li><Link to="/blog">Blog2</Link></li>
+          <li><Link to="/contact">Contact</Link></li>
         </ul>
+
         { this.props.children }
+
         <div className="main-footer">
           copyright &copy; 2018 Wasya co
         </div>

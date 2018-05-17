@@ -11,7 +11,10 @@ import { Provider } from 'react-redux'
 import React from 'react'
 import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
-import { StaticRouter, Route, Switch } from 'react-router-dom'
+import { matchPath, StaticRouter } from 'react-router'
+import { Route, Switch } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
+let Router = StaticRouter
 
 import config from 'config'
 import serverConfig from './config.json'
@@ -30,6 +33,7 @@ const store = createStore( reducer, applyMiddleware( thunk ) )
 
 
 
+
 class NoMatch extends React.Component {
   render () {
     return (<div>no match</div>)
@@ -39,7 +43,6 @@ class NoMatch extends React.Component {
 class App extends React.Component {
   render () {
     console.log('+++ +++ server.js App:', this.props, this.state)
-    console.log('+++ this:', this)
 
     return (
       <div>
@@ -48,8 +51,8 @@ class App extends React.Component {
         </MainNavigation>
         <hr style={{ border: '1px solid green' }} />
         <Switch>
-          <Route path="/blog" component={Blog} />
-          <Route path="/" component={Home} />
+          <Route exact path="/blog" component={Blog} />
+          <Route exact path="/" component={Home} />
         </Switch>
       </div>)
   }
@@ -57,6 +60,7 @@ class App extends React.Component {
 
 let app = Express()
 app.server = http.createServer(app)
+app.use(Express.static('dist'))
 
 // logger
 app.use(morgan('dev'))
@@ -67,17 +71,13 @@ app.use(cors({
 }))
 
 function handleRender(req, res) {
-  const params=qs.parse(req.query)
+  console.log("+++ handleRender:")
 
-  console.log('+++ url:', req.url)
-
-  const counter = parseInt(params.counter, 10) || 0
-  let preloadedState = { counter }
-
+  const params = qs.parse(req.query)
   const html = renderToString(
-    <StaticRouter location={req.url} context={{}}>
+    <Router context={{}} location={req.url} >
       <App />
-    </StaticRouter>
+    </Router>
   )
 
   const finalState = store.getState()
@@ -99,14 +99,14 @@ function renderFullPage(html, preloadedState) {
           // http://redux.js.org/recipes/ServerRendering.html#security-considerations
           window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')}
         </script>
-        <script src="/static/bundle.js"></script>
+        <script src="/client.js"></script>
       </body>
     </html>
   `
 }
 
 app.server.listen(process.env.PORT || serverConfig.port, () => {
-  console.log(`Started on port ${app.server.address().port}`)
+  console.log(`+++ +++ Started on port ${app.server.address().port}`)
 })
 
 export default app
