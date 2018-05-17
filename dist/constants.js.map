@@ -1,0 +1,1 @@
+{"version":3,"sources":["../src/constants.jsx"],"names":["SET","newsitems"],"mappings":";;;;;AACO,IAAMA,oBAAM;AACjBC,aAAW;AADM,CAAZ","file":"constants.js","sourcesContent":["\nexport const SET = {\n  newsitems: 'ann-set-newsitems',\n}\n\n"]}
