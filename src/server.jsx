@@ -77,6 +77,34 @@ function renderFullPage(html, preloadedState) {
           window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')}
         </script>
         <script src="/client.js"></script>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-47088821-4"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'UA-47088821-4'); // _vp_ 20180503 20180517 annesque.com
+        </script>
+
+        <script>
+          function initMap() {
+            var myLatLng = {lat: 36.9694354, lng: -122.029866};
+            var map = new google.maps.Map(document.getElementById('map'), {
+              zoom: 15,
+              center: myLatLng
+            });
+            var marker = new google.maps.Marker({
+              position: myLatLng,
+              map: map,
+              title: 'Lauden Nelson Community Center'
+            });
+          }
+        </script>
+        <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBz9MJTIs6pcyffyN5cbogsb9UT8q9xuxI&callback=initMap">
+        </script>
+            
       </body>
     </html>
   `

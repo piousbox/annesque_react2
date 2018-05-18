@@ -58,7 +58,7 @@
   "homepage": "https://github.com/developit/express-es6-rest-api#readme",
   "scripts": {
     "dev": "PORT=8082 NODE_PATH=./config/development:$NODE_PATH nodemon --watch src/ --exec babel-node src/server.jsx --presets es2015,stage-0",
-    "dev_client": "NODE_PATH=./config/development:$NODE_PATH  nodemon --watch ./src/client.jsx --watch ./src/ --exec 'webpack --config webpack/config.js' ",
+    "dev_client": "NODE_PATH=./config/development:$NODE_PATH nodemon --watch touch --exec 'webpack --config webpack/config.js' ",
     "build": "babel src -s -D -d dist --presets es2015,stage-0",
     "start": "node dist",
     "prestart": "npm run -s build",
