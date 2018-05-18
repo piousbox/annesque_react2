@@ -1,5 +1,5 @@
 
-== Isomorphic React Example
+## Isomorphic React Example
 
 With router!
 
