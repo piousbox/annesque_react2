@@ -18,3 +18,4 @@ docker run -p 8080:8080 es6/api-service
 
  ./node_modules/.bin/babel src/client.jsx -d dist
  ./node_modules/.bin/webpack --config webpack/config.js
+ ./node_modules/.bin/nodemon -w src/client.jsx --exec " ./node_modules/.bin/webpack --config webpack/config.js "

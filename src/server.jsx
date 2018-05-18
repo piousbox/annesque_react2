@@ -13,7 +13,6 @@ import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import { matchPath, StaticRouter } from 'react-router'
 import { Route, Switch } from 'react-router-dom'
-import { BrowserRouter } from 'react-router-dom'
 let Router = StaticRouter
 
 import config from 'config'
@@ -34,13 +33,20 @@ const store = createStore( reducer, applyMiddleware( thunk ) )
 
 
 
+
+
+
+
+
+
+
 class NoMatch extends React.Component {
   render () {
     return (<div>no match</div>)
   }
 }
 
-class App extends React.Component {
+/* class App extends React.Component {
   render () {
     console.log('+++ +++ server.js App:', this.props, this.state)
 
@@ -56,6 +62,18 @@ class App extends React.Component {
         </Switch>
       </div>)
   }
+} */
+class App extends React.Component {
+  render () {
+    return (
+      <MainNavigation>
+        <div>inside main nav</div>
+        <hr style={{ border: '1px solid green' }} />
+        <Route exact path="/blog" component={Blog} />
+        <Route exact path="/" component={Home} />
+      </MainNavigation>
+      )
+  }
 }
 
 let app = Express()
@@ -64,6 +82,7 @@ app.use(Express.static('dist'))
 
 // logger
 app.use(morgan('dev'))
+
 
 // 3rd party middleware
 app.use(cors({
@@ -93,13 +112,13 @@ function renderFullPage(html, preloadedState) {
         <title>Redux Universal Example</title>
       </head>
       <body>
-        <div id="root">${html}</div>
+        <div id="app">${html}</div>
         <script>
           // WARNING: See the following for security issues around embedding JSON in HTML:
           // http://redux.js.org/recipes/ServerRendering.html#security-considerations
           window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')}
         </script>
-        <script src="/src/client.js"></script>
+        <script src="/client.js"></script>
       </body>
     </html>
   `
