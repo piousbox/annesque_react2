@@ -22,3 +22,4 @@ The proof-of-concept demonstration is the following:
 
 That's the common usecase of isomorhpic react: load the initial state, and have the client take control from there.
  
+Made by Victor Pudeyev. victor@wasya.co
