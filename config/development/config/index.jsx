@@ -2,17 +2,12 @@
 let Config = {
   envName: "development",
   apiUrl: "http://localhost:3000",
-  fbAppId: "123014244977505",
-  domain: "piousbox.com",
+  domain: "annesque.com",
   lang: "en",
-  disqusShortname: "local-pi",
-
-  reportsEnabled: true,
-  galleriesEnabled: true,
-  videosEnabled: true,
-  tagsEnabled: true,
-  peopleEnabled: true,
-
+  staticDomain: "http://static.local",
+  "port": 8081,
+  "bodyLimit": "100kb",
+  "corsHeaders": ["Link"]
 }
 
 export default Config

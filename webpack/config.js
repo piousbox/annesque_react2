@@ -1,5 +1,6 @@
 
-const path = require('path');
+const path = require('path')
+
 module.exports = {
   entry: './src/client.jsx',
   output: {

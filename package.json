@@ -31,6 +31,7 @@
     "history": "^4.7.2",
     "morgan": "^1.8.0",
     "react": "^16.3.2",
+    "react-bootstrap": "^0.32.1",
     "react-dom": "^16.3.2",
     "react-redux": "^5.0.7",
     "react-router": "^4.2.0",
@@ -56,8 +57,8 @@
   },
   "homepage": "https://github.com/developit/express-es6-rest-api#readme",
   "scripts": {
-    "dev": "PORT=8082 NODE_PATH=./config/development:$NODE_PATH nodemon -w src/server.jsx --exec babel-node src/server.jsx --presets es2015,stage-0",
-    "dev_client": "NODE_PATH=./config/development:$NODE_PATH nodemon -w src/client.jsx --exec babel -s -D -d build --presets es2015,stage-0",
+    "dev": "PORT=8082 NODE_PATH=./config/development:$NODE_PATH nodemon --watch src/ --exec babel-node src/server.jsx --presets es2015,stage-0",
+    "dev_client": "NODE_PATH=./config/development:$NODE_PATH  nodemon --watch ./src/client.jsx --watch ./src/ --exec 'webpack --config webpack/config.js' ",
     "build": "babel src -s -D -d dist --presets es2015,stage-0",
     "start": "node dist",
     "prestart": "npm run -s build",
