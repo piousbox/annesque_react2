@@ -99,7 +99,7 @@ function renderFullPage(html, preloadedState) {
           // http://redux.js.org/recipes/ServerRendering.html#security-considerations
           window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')}
         </script>
-        <script src="/client.js"></script>
+        <script src="/src/client.js"></script>
       </body>
     </html>
   `
