@@ -1,7 +1,7 @@
 
-#
-# annesque_react2
-#
+== Isomorphic React Example
+
+With router!
 
 cd express-es6-rest-api
 
